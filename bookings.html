@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View and manage your TasteHub restaurant table bookings. Cancel or remove reservations directly from browser localStorage.">
+    <title>My Bookings – TasteHub Table Booking System</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Site Header -->
+    <header class="site-header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo-link">
+                <div class="logo-badge">🍽️</div>
+                <div class="brand-text-wrap">
+                    <h1 class="brand-title">Taste<span>Hub</span></h1>
+                    <span class="brand-tagline">Exquisite Dining & Table Reserve</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav" aria-label="Main Navigation">
+                <a href="index.html" class="nav-link" id="nav-home">Home</a>
+                <a href="menu.html" class="nav-link" id="nav-menu">Menu</a>
+                <a href="booking.html" class="nav-link" id="nav-booking">Book a Table</a>
+                <a href="bookings.html" class="nav-link active" id="nav-bookings">
+                    My Bookings
+                    <span class="badge-counter" id="booking-count-badge">0</span>
+                </a>
+                <a href="contact.html" class="nav-link" id="nav-contact">Contact</a>
+            </nav>
+
+            <a href="booking.html" class="nav-cta-btn">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
+                Book a Table
+            </a>
+
+            <!-- Mobile Hamburger Button -->
+            <button class="mobile-toggle-btn" id="mobile-menu-toggle" aria-label="Toggle Mobile Menu">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="menu.html" class="mobile-nav-link">Menu</a>
+        <a href="booking.html" class="mobile-nav-link">Book a Table</a>
+        <a href="bookings.html" class="mobile-nav-link active">My Bookings</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="bookings-section">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 2.5rem;">
+                <span class="section-subtitle">Local Browser Storage</span>
+                <h2 class="section-title">My Saved Bookings</h2>
+                <p class="section-desc">
+                    View all your active and past reservations. You can cancel a booking at any time to instantly release the table back to the available pool.
+                </p>
+            </div>
+
+            <!-- Toolbar: Search & Status Filter -->
+            <div class="bookings-toolbar">
+                <div class="status-filter-pills" id="booking-status-filters">
+                    <button class="filter-pill-btn active" data-status="ALL">All Bookings</button>
+                    <button class="filter-pill-btn" data-status="Confirmed">Confirmed</button>
+                    <button class="filter-pill-btn" data-status="Cancelled">Cancelled</button>
+                </div>
+
+                <div class="menu-search-wrapper" style="max-width: 340px; margin: 0;">
+                    <svg class="search-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" id="bookings-search-input" class="search-input" style="padding-top: 0.55rem; padding-bottom: 0.55rem;" placeholder="Search ID, guest name, phone..." aria-label="Search Bookings">
+                </div>
+
+                <a href="booking.html" class="btn btn-sm btn-primary">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    New Reservation
+                </a>
+            </div>
+
+            <!-- Bookings Grid List -->
+            <div class="bookings-grid" id="my-bookings-container">
+                <!-- Rendered dynamically by script.js -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="brand-title" style="font-size: 1.6rem;">Taste<span>Hub</span></div>
+                    <p>Where passion for gastronomy meets effortless table reservations. Your table awaits.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Full Menu</a></li>
+                        <li><a href="booking.html">Book a Table</a></li>
+                        <li><a href="bookings.html">My Saved Bookings</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Cancellation Policy</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 0.5rem;">
+                        Cancelling a booking immediately marks it as "Cancelled" and frees up the table for other guests on that date and time slot.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Need Assistance?</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 0.5rem;">
+                        📞 Concierge: +1 (555) 234-8899
+                    </p>
+                    <p style="color: var(--text-secondary); font-size: 0.88rem;">
+                        ✉️ support@tastehub-restaurant.com
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 TasteHub – Restaurant Table Booking System. All rights reserved.</p>
+                <p>Pure Vanilla JavaScript & HTML5 • Persistent Browser Storage</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Script File -->
+    <script src="js/script.js"></script>
+</body>
+</html>

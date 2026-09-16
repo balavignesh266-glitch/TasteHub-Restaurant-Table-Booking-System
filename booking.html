@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reserve your restaurant table at TasteHub with our real-time interactive floor plan. Choose from 2-seaters, 4-seaters, family booths, and royal banquet seating.">
+    <title>Book a Table – TasteHub Table Booking System</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Site Header -->
+    <header class="site-header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo-link">
+                <div class="logo-badge">🍽️</div>
+                <div class="brand-text-wrap">
+                    <h1 class="brand-title">Taste<span>Hub</span></h1>
+                    <span class="brand-tagline">Exquisite Dining & Table Reserve</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav" aria-label="Main Navigation">
+                <a href="index.html" class="nav-link" id="nav-home">Home</a>
+                <a href="menu.html" class="nav-link" id="nav-menu">Menu</a>
+                <a href="booking.html" class="nav-link active" id="nav-booking">Book a Table</a>
+                <a href="bookings.html" class="nav-link" id="nav-bookings">
+                    My Bookings
+                    <span class="badge-counter" id="booking-count-badge">0</span>
+                </a>
+                <a href="contact.html" class="nav-link" id="nav-contact">Contact</a>
+            </nav>
+
+            <a href="booking.html" class="nav-cta-btn">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
+                Book a Table
+            </a>
+
+            <!-- Mobile Hamburger Button -->
+            <button class="mobile-toggle-btn" id="mobile-menu-toggle" aria-label="Toggle Mobile Menu">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="menu.html" class="mobile-nav-link">Menu</a>
+        <a href="booking.html" class="mobile-nav-link active">Book a Table</a>
+        <a href="bookings.html" class="mobile-nav-link">My Bookings</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+    </div>
+
+    <!-- Booking Main Content -->
+    <main class="booking-section-wrapper">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 2.5rem;">
+                <span class="section-subtitle">Real-Time Floor Availability</span>
+                <h2 class="section-title">Reserve Your Table</h2>
+                <p class="section-desc">
+                    Pick your preferred date, time, and table from our interactive floor map below, then enter your details to confirm your reservation.
+                </p>
+            </div>
+
+            <!-- Two Column Layout: Floor Map (Left) & Customer Form (Right) -->
+            <div class="booking-layout-grid">
+                
+                <!-- LEFT: Visual Floor Plan & Availability Map -->
+                <div class="floor-card">
+                    <div class="floor-card-header">
+                        <div>
+                            <h3 style="font-size: 1.35rem; margin-bottom: 2px;">Floor Map & Table Availability</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.85rem;">Click an available green table to select your seat.</p>
+                        </div>
+
+                        <!-- Status Color Legend -->
+                        <div class="floor-legend">
+                            <div class="legend-item">
+                                <span class="legend-box available"></span>
+                                <span>Available</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-box selected"></span>
+                                <span>Selected</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-box booked"></span>
+                                <span>Booked</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Seating Capacity Quick Filters -->
+                    <div class="preference-filter-bar">
+                        <span style="font-size: 0.82rem; color: var(--text-muted); align-self: center; margin-right: 4px;">Highlight:</span>
+                        <button type="button" class="pref-pill active" data-pref="ALL">All Tables</button>
+                        <button type="button" class="pref-pill" data-pref="2-Seater">2-Seater</button>
+                        <button type="button" class="pref-pill" data-pref="4-Seater">4-Seater</button>
+                        <button type="button" class="pref-pill" data-pref="6-Seater">6-Seater</button>
+                        <button type="button" class="pref-pill" data-pref="8-Seater">8-Seater</button>
+                    </div>
+
+                    <!-- Interactive Tables Grid -->
+                    <div class="restaurant-floor-grid" id="restaurant-floor-grid">
+                        <!-- Rendered dynamically by script.js with Available, Selected, or Booked states -->
+                    </div>
+
+                    <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">
+                        <span>💡 Changing the reservation date or time slot recalculates floor availability in real time.</span>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Reservation Form -->
+                <div class="form-card">
+                    <h3 class="form-card-title">Guest & Reservation Details</h3>
+                    <p class="form-card-subtitle">Complete this form to secure your selected table.</p>
+
+                    <!-- Selected Table Card Preview -->
+                    <div class="selected-table-preview" id="selected-table-preview-card">
+                        <div class="table-preview-info">
+                            <h5>Selected Table</h5>
+                            <p style="color: var(--text-muted); font-weight: normal;">No table selected. Click an available table on the floor plan.</p>
+                        </div>
+                        <span class="preview-badge" style="background: var(--bg-secondary); color: var(--text-muted); border: 1px solid var(--border-subtle);">None</span>
+                    </div>
+
+                    <form id="restaurant-booking-form" novalidate>
+                        <input type="hidden" id="selected-table-input" name="selectedTable">
+
+                        <!-- Date and Time Row -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="booking-date" class="form-label">Reservation Date <span class="req">*</span></label>
+                                <input type="date" id="booking-date" class="form-control" required>
+                                <span class="error-msg">Please select a valid future date.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="booking-time" class="form-label">Time Slot <span class="req">*</span></label>
+                                <select id="booking-time" class="form-control" required>
+                                    <option value="" disabled selected>Select a time slot</option>
+                                    <option value="12:00">12:00 PM (Lunch)</option>
+                                    <option value="13:00">1:00 PM (Lunch)</option>
+                                    <option value="14:00">2:00 PM (Lunch)</option>
+                                    <option value="18:00">6:00 PM (Early Dinner)</option>
+                                    <option value="19:00">7:00 PM (Dinner)</option>
+                                    <option value="20:00" selected>8:00 PM (Prime Dinner)</option>
+                                    <option value="21:00">9:00 PM (Late Dinner)</option>
+                                    <option value="22:00">10:00 PM (Late Night)</option>
+                                </select>
+                                <span class="error-msg">Please select a time slot.</span>
+                            </div>
+                        </div>
+
+                        <!-- Guests & Table Preference Row -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="booking-guests" class="form-label">Number of Guests <span class="req">*</span></label>
+                                <select id="booking-guests" class="form-control" required>
+                                    <option value="1">1 Person</option>
+                                    <option value="2" selected>2 Guests</option>
+                                    <option value="3">3 Guests</option>
+                                    <option value="4">4 Guests</option>
+                                    <option value="5">5 Guests</option>
+                                    <option value="6">6 Guests</option>
+                                    <option value="7">7 Guests</option>
+                                    <option value="8">8 Guests</option>
+                                </select>
+                                <span class="error-msg">Please specify guest count.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="booking-table-pref" class="form-label">Table Preference</label>
+                                <select id="booking-table-pref" class="form-control">
+                                    <option value="2-Seater">2-Seater</option>
+                                    <option value="4-Seater">4-Seater</option>
+                                    <option value="6-Seater">6-Seater</option>
+                                    <option value="8-Seater">8-Seater</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Customer Name -->
+                        <div class="form-group">
+                            <label for="customer-name" class="form-label">Full Name <span class="req">*</span></label>
+                            <input type="text" id="customer-name" class="form-control" placeholder="e.g. Eleanor Vance" required>
+                            <span class="error-msg">Please enter your name.</span>
+                        </div>
+
+                        <!-- Email & Phone -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="customer-email" class="form-label">Email Address <span class="req">*</span></label>
+                                <input type="email" id="customer-email" class="form-control" placeholder="name@example.com" required>
+                                <span class="error-msg">Please enter a valid email address.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="customer-phone" class="form-label">Phone Number <span class="req">*</span></label>
+                                <input type="tel" id="customer-phone" class="form-control" placeholder="+1 (555) 000-0000" required>
+                                <span class="error-msg">Please enter a valid phone number.</span>
+                            </div>
+                        </div>
+
+                        <!-- Special Request -->
+                        <div class="form-group">
+                            <label for="special-requests" class="form-label">Special Request / Message (Optional)</label>
+                            <textarea id="special-requests" class="form-control" placeholder="Dietary restrictions, anniversary celebration, birthday surprise, window seating preference..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="submit-booking-btn" style="width: 100%; margin-top: 0.5rem;">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            Confirm Reservation
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Confirmation Modal / Receipt Voucher (Triggered after successful submission) -->
+    <div class="modal-backdrop" id="confirmation-modal">
+        <div class="confirmation-card" id="printable-voucher">
+            <div class="conf-icon-wrap">
+                <svg width="38" height="38" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            
+            <h2 class="conf-title">Booking Confirmed!</h2>
+            <p class="conf-subtitle">Thank you! Your table has been reserved and saved to your local storage.</p>
+
+            <!-- Printable Voucher Receipt -->
+            <div class="voucher-ticket">
+                <div class="voucher-id-row">
+                    <div>
+                        <span class="voucher-id-label">Reservation ID</span>
+                        <div class="voucher-id-code" id="conf-booking-id">TH-00000</div>
+                    </div>
+                    <span class="badge badge-success">Confirmed</span>
+                </div>
+
+                <div class="voucher-details-grid">
+                    <div class="voucher-detail-item">
+                        <label>Guest Name</label>
+                        <p id="conf-customer-name">John Doe</p>
+                    </div>
+                    <div class="voucher-detail-item">
+                        <label>Reserved Table</label>
+                        <p id="conf-table">Table #1</p>
+                    </div>
+                    <div class="voucher-detail-item">
+                        <label>Date</label>
+                        <p id="conf-date">2026-09-18</p>
+                    </div>
+                    <div class="voucher-detail-item">
+                        <label>Time Slot</label>
+                        <p id="conf-time">8:00 PM</p>
+                    </div>
+                    <div class="voucher-detail-item">
+                        <label>Party Size</label>
+                        <p id="conf-guests">2 Guests</p>
+                    </div>
+                    <div class="voucher-detail-item">
+                        <label>Special Requests</label>
+                        <p id="conf-special-req">None</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1.25rem; padding-top: 0.75rem; border-top: 1px solid var(--border-subtle); font-size: 0.75rem; color: var(--text-muted); text-align: center;">
+                    TasteHub Haute Cuisine • 142 Haute Blvd, Midtown • (555) 234-8899
+                </div>
+            </div>
+
+            <!-- Modal Action Buttons -->
+            <div class="conf-actions">
+                <button class="btn btn-primary" onclick="window.print()" id="print-booking-btn">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                    Print Booking
+                </button>
+                <a href="bookings.html" class="btn btn-outline" id="view-my-bookings-btn">
+                    View in My Bookings
+                </a>
+                <a href="index.html" class="btn btn-outline" id="back-home-btn">
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="brand-title" style="font-size: 1.6rem;">Taste<span>Hub</span></div>
+                    <p>Where passion for gastronomy meets effortless table reservations. Your table awaits.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Full Menu</a></li>
+                        <li><a href="booking.html">Book a Table</a></li>
+                        <li><a href="bookings.html">My Saved Bookings</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Table Capacities</h4>
+                    <ul class="footer-links">
+                        <li><span>• Table 1 & 2: 2-Seaters (Window)</span></li>
+                        <li><span>• Table 3 & 4: 4-Seaters (Garden View)</span></li>
+                        <li><span>• Table 5 & 9: 6-Seaters (Pavilion/Lounge)</span></li>
+                        <li><span>• Table 6 & 10: 8-Seaters (Royal Banquet)</span></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Booking Policies</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 0.5rem;">
+                        Tables are held for up to 15 minutes past reservation time.
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 0.82rem;">
+                        You can cancel or view your bookings anytime under the "My Bookings" tab.
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 TasteHub – Restaurant Table Booking System. All rights reserved.</p>
+                <p>Pure Vanilla JavaScript & HTML5 • Persistent Browser Storage</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Script File -->
+    <script src="js/script.js"></script>
+</body>
+</html>

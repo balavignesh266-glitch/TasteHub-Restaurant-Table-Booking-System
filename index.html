@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TasteHub – Experience fine dining and reserve your exclusive restaurant table with real-time floor plan availability.">
+    <title>TasteHub – Restaurant Table Booking System</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Site Header & Navigation Bar -->
+    <header class="site-header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo-link" id="brand-logo-link">
+                <div class="logo-badge">🍽️</div>
+                <div class="brand-text-wrap">
+                    <h1 class="brand-title">Taste<span>Hub</span></h1>
+                    <span class="brand-tagline">Exquisite Dining & Table Reserve</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav" aria-label="Main Navigation">
+                <a href="index.html" class="nav-link active" id="nav-home">Home</a>
+                <a href="menu.html" class="nav-link" id="nav-menu">Menu</a>
+                <a href="booking.html" class="nav-link" id="nav-booking">Book a Table</a>
+                <a href="bookings.html" class="nav-link" id="nav-bookings">
+                    My Bookings
+                    <span class="badge-counter" id="booking-count-badge">0</span>
+                </a>
+                <a href="contact.html" class="nav-link" id="nav-contact">Contact</a>
+            </nav>
+
+            <a href="booking.html" class="nav-cta-btn" id="nav-reserve-cta">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
+                Book a Table
+            </a>
+
+            <!-- Mobile Hamburger Button -->
+            <button class="mobile-toggle-btn" id="mobile-menu-toggle" aria-label="Toggle Mobile Menu">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+        <a href="index.html" class="mobile-nav-link active">Home</a>
+        <a href="menu.html" class="mobile-nav-link">Menu</a>
+        <a href="booking.html" class="mobile-nav-link">Book a Table</a>
+        <a href="bookings.html" class="mobile-nav-link">My Bookings</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+        <a href="booking.html" class="btn btn-primary" style="margin-top: 0.5rem;">Reserve Table Now</a>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <div class="hero-badge">
+                    <span class="badge badge-gold">✨ Michelin Guide Recognized • Award-Winning Ambiance</span>
+                </div>
+                <h2 class="hero-title">
+                    Artisan Culinary Magic Meets <span>Effortless Reservation</span>
+                </h2>
+                <p class="hero-desc">
+                    Immerse yourself in authentic gourmet aromas, world-class vintage cellars, and tranquil ambiance. Select your favorite table in real time with TasteHub.
+                </p>
+                <div class="hero-actions">
+                    <a href="booking.html" class="btn btn-primary" id="hero-book-btn">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
+                        Book a Table
+                    </a>
+                    <a href="menu.html" class="btn btn-outline" id="hero-menu-btn">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                        View Menu
+                    </a>
+                </div>
+
+                <!-- Hero Features Row -->
+                <div class="hero-features">
+                    <div class="feature-pill">
+                        <div class="feature-icon">🌿</div>
+                        <div class="feature-text">
+                            <h4>Farm-Fresh Harvest</h4>
+                            <p>Organic 100% locally sourced produce</p>
+                        </div>
+                    </div>
+                    <div class="feature-pill">
+                        <div class="feature-icon">🍷</div>
+                        <div class="feature-text">
+                            <h4>Grand Cellar</h4>
+                            <p>Sommelier-curated vintage wines & mocktails</p>
+                        </div>
+                    </div>
+                    <div class="feature-pill">
+                        <div class="feature-icon">⚡</div>
+                        <div class="feature-text">
+                            <h4>Instant Confirmation</h4>
+                            <p>Live interactive floor seating</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story & Opening Hours Section -->
+        <section class="section section-alt" id="story-hours">
+            <div class="container">
+                <div class="story-hours-grid">
+                    <!-- Left: Culinary Story -->
+                    <div class="story-card">
+                        <span class="section-subtitle">The TasteHub Philosophy</span>
+                        <h3>Crafting Unforgettable Dining Memories Since 2012</h3>
+                        <p>
+                            At TasteHub, every dish is an artistic expression. Led by Executive Chef Antonio Moretti, our kitchen blends time-honored Mediterranean and royal Indian heritage recipes with modern culinary precision.
+                        </p>
+                        <p>
+                            From slow-dum clay pot biryanis to hand-rolled artisanal pastas and charcoal-roasted specialties, we elevate every dining occasion into a celebratory feast.
+                        </p>
+                        <div style="margin-top: 1.75rem; display: flex; gap: 1rem; align-items: center;">
+                            <a href="menu.html" class="btn btn-sm btn-outline">Explore Our Dishes</a>
+                            <span style="color: var(--text-muted); font-size: 0.88rem;">• Over 45+ Signature Offerings</span>
+                        </div>
+                    </div>
+
+                    <!-- Right: Opening Hours Card -->
+                    <div class="hours-card" id="opening-hours-card">
+                        <div class="hours-header">
+                            <div>
+                                <span class="section-subtitle" style="margin-bottom: 0;">Plan Your Visit</span>
+                                <h3>Opening Hours</h3>
+                            </div>
+                            <div class="live-status-chip">
+                                <span class="pulse-circle"></span> Open Today
+                            </div>
+                        </div>
+
+                        <ul class="hours-list">
+                            <li class="hours-item">
+                                <span class="hours-day">Monday – Thursday</span>
+                                <span class="hours-time">11:30 AM – 10:30 PM</span>
+                            </li>
+                            <li class="hours-item">
+                                <span class="hours-day">Friday & Saturday</span>
+                                <span class="hours-time">11:30 AM – 11:30 PM</span>
+                            </li>
+                            <li class="hours-item">
+                                <span class="hours-day">Sunday Brunch & Dinner</span>
+                                <span class="hours-time">10:30 AM – 10:00 PM</span>
+                            </li>
+                            <li class="hours-item">
+                                <span class="hours-day">Afternoon High Tea</span>
+                                <span class="hours-time">3:30 PM – 5:30 PM (Daily)</span>
+                            </li>
+                        </ul>
+
+                        <div class="hours-note">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            <span>Reservations strongly recommended for prime evening dinner slots.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Dishes Section -->
+        <section class="section" id="popular-dishes">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Chef's Recommendations</span>
+                    <h2 class="section-title">Popular Dishes</h2>
+                    <p class="section-desc">Hand-picked culinary masterpieces most adored by our guests.</p>
+                </div>
+
+                <div class="menu-grid" id="popular-dishes-grid">
+                    <!-- Populated dynamically via script.js -->
+                </div>
+
+                <div style="text-align: center; margin-top: 3.5rem;">
+                    <a href="menu.html" class="btn btn-primary" id="view-full-menu-btn">
+                        <span>View Full Restaurant Menu (6 Categories)</span>
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Booking CTA Banner -->
+        <section class="section section-alt" style="border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+            <div class="container" style="text-align: center; max-width: 760px;">
+                <span class="badge badge-gold" style="margin-bottom: 1rem;">Ready for an unforgettable dining experience?</span>
+                <h2 style="font-size: 2.2rem; margin-bottom: 1rem;">Book Your Table in Seconds</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                    Check visual floor availability for 2-seaters, family booths, and grand banquets with instant confirmation stored directly on your browser.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="booking.html" class="btn btn-primary">Select Seating & Reserve</a>
+                    <a href="bookings.html" class="btn btn-outline">Check My Existing Bookings</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="brand-title" style="font-size: 1.6rem;">Taste<span>Hub</span></div>
+                    <p>Where passion for gastronomy meets effortless table reservations. Your table awaits.</p>
+                    <span class="badge badge-gold">⭐ 4.9 / 5 Rated on OpenTable & Google</span>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Full Menu</a></li>
+                        <li><a href="booking.html">Book a Table</a></li>
+                        <li><a href="bookings.html">My Saved Bookings</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Menu Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="menu.html">Artisan Starters</a></li>
+                        <li><a href="menu.html">Main Course</a></li>
+                        <li><a href="menu.html">Royal Biryanis</a></li>
+                        <li><a href="menu.html">Vegetarian Delicacies</a></li>
+                        <li><a href="menu.html">Decadent Desserts</a></li>
+                        <li><a href="menu.html">Mocktails & Beverages</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Location & Inquiries</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 0.75rem;">
+                        📍 142 Haute Boulevard, Midtown Arts District, NY 10018
+                    </p>
+                    <p style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 0.75rem;">
+                        📞 Reservations: +1 (555) 234-8899
+                    </p>
+                    <p style="color: var(--text-secondary); font-size: 0.92rem;">
+                        ✉️ concierge@tastehub-restaurant.com
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 TasteHub – Restaurant Table Booking System. All rights reserved.</p>
+                <p>Pure Vanilla JavaScript & HTML5 • Persistent Browser Storage</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Script File -->
+    <script src="js/script.js"></script>
+</body>
+</html>
